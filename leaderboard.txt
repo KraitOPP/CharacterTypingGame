@@ -1,1 +1,3 @@
+Naveen,102
+yuvraj,57
 Shubham,22

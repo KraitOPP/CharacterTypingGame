@@ -8,7 +8,6 @@
 #include <ctime>
 #include <algorithm>
 
-// Game state variables
 int windowWidth = 800;
 int windowHeight = 600;
 float characterPositionX = 0.0f;
@@ -22,7 +21,6 @@ float landscapeOffsetX = -1.0;
 float characterFallSpeed = 0.003f;
 float difficultyFactor = 1.0f;
 
-// Animation variables
 float sunRotation = 0.0f;
 float cloudOffsetX = 0.0f;
 
@@ -78,7 +76,7 @@ void keyboard(unsigned char key, int x, int y) {
     } else {
         if (key == 'r' || key == 'R') {
             showLeaderboard = false;
-            restartGame();
+            restartGame(); 
             startGame();
         } else if (key == 'l' || key == 'L') {
             showLeaderboard = !showLeaderboard;
@@ -87,7 +85,6 @@ void keyboard(unsigned char key, int x, int y) {
 }
 
 void update(int value) {
-    // Update animations
     sunRotation += 0.2f;
     if (sunRotation > 360.0f) sunRotation -= 360.0f;
     
@@ -100,12 +97,9 @@ void update(int value) {
         landscapeOffsetX += 0.001f;
     }
     
-    // Update particles
     updateParticles();
     
-    // Update game logic
     if (!gameover && gameStarted) {
-        // Update character positions and check for game over
         bool gameOver = updateCharacters(characterFallSpeed);
         if (gameOver) {
             lifeScore--;
@@ -115,13 +109,11 @@ void update(int value) {
             }
         }
         
-        // Generate new characters
         int activeCharacterCount = getActiveCharacterCount();
         if (activeCharacterCount < 3) {
             generateRandomCharacter();
         }
 
-        // Clean up inactive characters
         removeInactiveCharacters();
     }
     

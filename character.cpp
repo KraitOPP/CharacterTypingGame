@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <algorithm>
 
-// Color constants
 Color skyColor(0.53f, 0.81f, 0.92f);
 Color sunColor(1.0f, 0.95f, 0.1f);
 Color grassColor(0.0f, 0.8f, 0.0f);
@@ -12,11 +11,9 @@ Color textColor(1.0f, 1.0f, 1.0f);
 Color gameOverColor(1.0f, 0.2f, 0.2f);
 Color highlightColor(0.0f, 1.0f, 0.7f);
 
-// Static containers for characters and particles
 static std::vector<Character> characters;
 static std::vector<Particle> particles;
 
-// Get references to the containers
 std::vector<Character>& getCharacters() {
     return characters;
 }

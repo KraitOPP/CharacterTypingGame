@@ -168,7 +168,6 @@ void drawParticles() {
 }
 
 void drawGameInterface() {
-    // Display life hearts
     glColor3f(textColor.r, textColor.g, textColor.b);
     glRasterPos2f(-0.98f, -0.8f);
     string livesText = "Lives: ";
@@ -208,7 +207,6 @@ void drawGameInterface() {
         glEnd();
     }
 
-    // Display player name
     glColor3f(textColor.r, textColor.g, textColor.b);
     glRasterPos2f(-0.98f, -0.9f);
     string textToDisplay = "Player: " + playerName;
@@ -216,7 +214,6 @@ void drawGameInterface() {
         glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, c);
     }
 
-    // Display score
     glColor3f(highlightColor.r, highlightColor.g, highlightColor.b);
     glRasterPos2f(0.75f, -0.8f);
     string scoreText = "Score: " + to_string(score);
@@ -310,7 +307,6 @@ void drawGameOverScreen() {
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Sky and background
     glBegin(GL_QUADS);
     glColor3f(skyColor.r, skyColor.g, skyColor.b);
     glVertex2f(-1.0f, 1.0f);
@@ -323,7 +319,6 @@ void display() {
     displaySun();
     displayClouds();
 
-    // Draw hills
     glColor3f(grassColor.r, grassColor.g, grassColor.b);
     glBegin(GL_TRIANGLES);
     glVertex2f(-0.6f + landscapeOffsetX, -0.7f);
@@ -337,7 +332,6 @@ void display() {
     glVertex2f(0.55f + landscapeOffsetX, -0.5f);
     glEnd();
 
-    // Draw road
     glBegin(GL_POLYGON);
     glColor3f(roadColor.r, roadColor.g, roadColor.b);
     glVertex2f(-1.0, -0.7);
@@ -346,7 +340,6 @@ void display() {
     glVertex2f(-1.0, -1.0);
     glEnd();
     
-    // Draw road markings
     glColor3f(1.0f, 1.0f, 0.0f);
     glLineWidth(3.0f);
     glBegin(GL_LINES);
@@ -358,7 +351,6 @@ void display() {
 
     displayTree();
 
-    // Draw UI background
     glColor4f(0.0f, 0.0f, 0.0f, 0.6f);
     glBegin(GL_QUADS);
     glVertex2f(-1.0f, -0.7f);
@@ -367,10 +359,8 @@ void display() {
     glVertex2f(-1.0f, -1.0f);
     glEnd();
 
-    // Draw game UI elements
     drawGameInterface();
 
-    // Draw characters
     for (const Character& character : getCharacters()) {
         if (character.active)
             drawCharacter(character.posX, character.posY, character.value, character.color, character.rotation, character.scale);
@@ -378,7 +368,6 @@ void display() {
     
     drawParticles();
 
-    // Draw game state overlays
     if (gameover) {
         drawGameOverScreen();
     } else if (!gameStarted) {
